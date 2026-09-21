@@ -68,6 +68,7 @@
   --wheat: oklch(0.845 0.18 94);
   --font-display: "DM Serif Display", ui-serif, Georgia, serif;
   --font-body: "Fira Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-hero: "Lilita One", "DM Serif Display", ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {

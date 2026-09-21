@@ -463,11 +463,22 @@ function Index() {
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
               Más que pasta
             </p>
-            <h1 className="text-5xl leading-[1.05] sm:text-6xl">
-              Pastas a domicilio
+            <h1
+              className="text-6xl uppercase leading-[0.95] tracking-wide sm:text-7xl lg:text-8xl"
+              style={{ fontFamily: "var(--font-hero)" }}
+            >
+              <span className="block text-foreground">Pastas</span>
+              <span
+                className="block text-primary"
+                style={{ textShadow: "3px 3px 0 var(--basil)" }}
+              >
+                Fidelio
+              </span>
             </h1>
             <p className="mt-5 text-lg text-muted-foreground">
-              Pastas, hamburguesas, sandwich y más.
+              Disfruta del auténtico sabor de la pasta en cada bocado. 🍝✨ Explora nuestro
+              menú, haz tus pedidos de forma rápida y vive una experiencia culinaria única
+              hecha con pasión y tradición. ¡Pide la tuya hoy!
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
