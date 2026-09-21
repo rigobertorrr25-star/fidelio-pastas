@@ -13,6 +13,8 @@ import {
   Play,
   Plus,
   ShoppingBasket,
+  Volume2,
+  VolumeX,
   X,
 } from "lucide-react";
 
@@ -38,78 +40,94 @@ const WHATSAPP_DISPLAY = "317 054 9739";
 const INSTAGRAM_URL = "https://www.instagram.com/fideliopasta/";
 const ADDRESS = "Calle 47 # 22-08, Altamira, Palmira";
 const HOURS = "4:00 p. m. a 11:00 p. m.";
-const TIKTOK_VIDEO_URL = "https://www.tiktok.com/@fidelio.mas.que.p/video/7686674711215934741";
-const TIKTOK_VIDEO_ID = "7686674711215934741";
-const TIKTOK_HANDLE = "@fidelio.mas.que.p";
+const HERO_VIDEO_SRC = "/fidelio-video.mp4";
+const HERO_VIDEO_POSTER = "/fidelio-video-poster.jpg";
 
-function TikTokEmbed() {
-  return (
-    <iframe
-      src={`https://www.tiktok.com/embed/v2/${TIKTOK_VIDEO_ID}?autoplay=1&muted=1&loop=1`}
-      allow="autoplay; encrypted-media; fullscreen"
-      allowFullScreen
-      className="aspect-[9/16] w-full rounded-3xl"
-      style={{ border: 0 }}
-      title={`Video de Fidelio en TikTok: ${TIKTOK_HANDLE}`}
-    />
-  );
-}
-
-type TikTokOEmbed = { thumbnail_url?: string; title?: string };
-
-function TikTokFacade() {
-  const [activated, setActivated] = useState(false);
-  const [meta, setMeta] = useState<TikTokOEmbed | null>(null);
+function HeroVideo() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [muted, setMuted] = useState(true);
+  const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
-    let cancelled = false;
-    fetch(`https://www.tiktok.com/oembed?url=${encodeURIComponent(TIKTOK_VIDEO_URL)}`)
-      .then((res) => res.json())
-      .then((data: TikTokOEmbed) => {
-        if (!cancelled) setMeta(data);
+    const video = videoRef.current;
+    if (!video) return;
+    let cleanup = () => {};
+
+    // Primero intenta con sonido; si el navegador lo bloquea, arranca en
+    // silencio y activa el sonido en la primera interacción de la persona.
+    video.muted = false;
+    video
+      .play()
+      .then(() => {
+        setMuted(false);
+        setPlaying(true);
       })
-      .catch(() => {});
-    return () => {
-      cancelled = true;
-    };
+      .catch(() => {
+        video.muted = true;
+        setMuted(true);
+        video.play().then(() => setPlaying(true)).catch(() => {});
+        const events = ["pointerdown", "keydown", "touchend"] as const;
+        const unmute = () => {
+          video.muted = false;
+          setMuted(false);
+          if (video.paused) video.play().catch(() => {});
+          cleanup();
+        };
+        events.forEach((e) => window.addEventListener(e, unmute, { once: true }));
+        cleanup = () => events.forEach((e) => window.removeEventListener(e, unmute));
+      });
+
+    return () => cleanup();
   }, []);
 
-  if (activated) {
-    return <TikTokEmbed />;
-  }
+  const toggleSound = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = !video.muted;
+    setMuted(video.muted);
+    if (video.paused) video.play().catch(() => {});
+  };
 
   return (
-    <button
-      type="button"
-      onClick={() => setActivated(true)}
-      aria-label="Reproducir video de Fidelio en TikTok"
-      className="group relative block aspect-[9/16] w-full overflow-hidden rounded-3xl border border-border bg-card shadow-2xl"
-    >
-      {meta?.thumbnail_url ? (
-        <img
-          src={meta.thumbnail_url}
-          alt="Video de Fidelio en TikTok"
-          loading="lazy"
-          className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-      ) : (
-        <div className="flex size-full items-center justify-center bg-gradient-to-br from-primary/20 to-basil/20">
-          <span className="text-sm text-muted-foreground">Cargando video…</span>
-        </div>
+    <div className="relative aspect-[9/16] w-full overflow-hidden rounded-3xl border border-border bg-card shadow-2xl">
+      <video
+        ref={videoRef}
+        src={HERO_VIDEO_SRC}
+        poster={HERO_VIDEO_POSTER}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        onPlaying={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
+        onClick={() => {
+          const video = videoRef.current;
+          if (video?.paused) video.play().catch(() => {});
+        }}
+        className="size-full object-cover"
+      />
+      {!playing && (
+        <button
+          type="button"
+          onClick={() => videoRef.current?.play().catch(() => {})}
+          aria-label="Reproducir video de Fidelio"
+          className="absolute inset-0 flex items-center justify-center bg-black/20"
+        >
+          <span className="flex size-16 items-center justify-center rounded-full bg-white/95 text-foreground shadow-lg">
+            <Play className="size-7 translate-x-0.5 fill-current" aria-hidden />
+          </span>
+        </button>
       )}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-transparent" />
-      <div className="absolute inset-0 flex items-center justify-center">
-        <span className="flex size-16 items-center justify-center rounded-full bg-white/95 text-foreground shadow-lg transition-transform group-hover:scale-110">
-          <Play className="size-7 translate-x-0.5 fill-current" aria-hidden />
-        </span>
-      </div>
-      <div className="absolute inset-x-4 bottom-4 text-left text-white">
-        <p className="text-sm font-semibold">{TIKTOK_HANDLE}</p>
-        <p className="mt-1 line-clamp-2 text-xs text-white/80">
-          {meta?.title ?? "Míranos en TikTok"}
-        </p>
-      </div>
-    </button>
+      <button
+        type="button"
+        onClick={toggleSound}
+        aria-label={muted ? "Activar sonido" : "Silenciar"}
+        className="absolute bottom-3 right-3 flex size-10 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur transition-colors hover:bg-black/80"
+      >
+        {muted ? <VolumeX className="size-5" aria-hidden /> : <Volume2 className="size-5" aria-hidden />}
+      </button>
+    </div>
   );
 }
 
@@ -483,7 +501,7 @@ function Index() {
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
             className="mx-auto w-full max-w-[360px] lg:mx-0 lg:justify-self-end"
           >
-            <TikTokFacade />
+            <HeroVideo />
           </motion.div>
         </div>
       </section>
