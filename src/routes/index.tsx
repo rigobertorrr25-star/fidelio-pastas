@@ -453,11 +453,10 @@ function Index() {
               Más que pasta
             </p>
             <h1 className="text-5xl leading-[1.05] sm:text-6xl">
-              Pasta artesanal, sánduches y más a domicilio
+              Pastas a domicilio
             </h1>
             <p className="mt-5 text-lg text-muted-foreground">
-              Elabora tu pasta a tu gusto, pide un sánduche, hamburguesa o churrasco.
-              Domicilios a toda Palmira, todos los días de {HOURS}
+              Pastas, hamburguesas, sandwich y más.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
