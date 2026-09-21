@@ -20,6 +20,7 @@ import logoImg from "@/assets/logo.jpg";
 import pastaNapolitanaImg from "@/assets/pasta-napolitana.jpg";
 import pastaBechamelImg from "@/assets/pasta-bechamel.jpg";
 import pastaFidelioImg from "@/assets/pasta-fidelio.jpg";
+import pastaMarineraPlatoImg from "@/assets/pasta-marinera-plato.jpg";
 import sanducheImg from "@/assets/sanduche-fidelio.jpg";
 import hamburguesaImg from "@/assets/hamburguesa.jpg";
 import localImg from "@/assets/pasta-marinera.jpg";
@@ -195,6 +196,16 @@ const PRODUCTS: Product[] = [
     pastaChoice: true,
   },
   {
+    id: "pasta-marinera",
+    name: "Pasta Marinera",
+    description: "Camarones tigre, palmito, mejillones, zumo de limón, perejil y parmesano.",
+    price: 36000,
+    tag: "Espagueti, fettuccine o penne",
+    category: "pastas",
+    image: pastaMarineraPlatoImg,
+    pastaChoice: true,
+  },
+  {
     id: "sanduche",
     name: "Sánduche Fidelio",
     description:
@@ -313,13 +324,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Pastas artesanales, sánduches, hamburguesa y churrasco. Domicilios a toda Palmira de 4:00 p. m. a 11:00 p. m. Pide por WhatsApp.",
+          "Pastas, sánduches, hamburguesa y churrasco. Domicilios a toda Palmira de 4:00 p. m. a 11:00 p. m. Pide por WhatsApp.",
       },
       { property: "og:title", content: "FIDELIO — Más que pasta" },
       {
         property: "og:description",
         content:
-          "Pastas artesanales, sánduches, hamburguesa y churrasco con domicilio a toda Palmira. Pide por WhatsApp.",
+          "Pastas, sánduches, hamburguesa y churrasco con domicilio a toda Palmira. Pide por WhatsApp.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -657,13 +668,13 @@ function Index() {
             <h2 className="text-4xl">Más que pasta</h2>
             <p className="mt-4 text-lg text-muted-foreground">
               Somos un negocio familiar de comida italiana en Palmira. Preparamos cada
-              plato del día: pasta artesanal a tu gusto, sánduches, hamburguesa y
+              plato del día: pasta a tu gusto, sánduches, hamburguesa y
               churrasco, listos para disfrutar en casa.
             </p>
             <ul className="mt-6 space-y-2 text-foreground">
               <li className="flex items-center gap-2">
                 <span className="size-2 rounded-full bg-basil" />
-                Elaboración artesanal cada día
+                Preparado cada día
               </li>
               <li className="flex items-center gap-2">
                 <span className="size-2 rounded-full bg-basil" />

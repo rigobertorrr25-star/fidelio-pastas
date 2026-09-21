@@ -81,13 +81,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Pastas artesanales, sánduches, hamburguesa y churrasco a domicilio en Palmira. Pide por WhatsApp.",
+          "Pastas, sánduches, hamburguesa y churrasco a domicilio en Palmira. Pide por WhatsApp.",
       },
       { property: "og:title", content: "FIDELIO — Más que pasta" },
       {
         property: "og:description",
         content:
-          "Pastas artesanales, sánduches, hamburguesa y churrasco a domicilio en Palmira. Pide por WhatsApp.",
+          "Pastas, sánduches, hamburguesa y churrasco a domicilio en Palmira. Pide por WhatsApp.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
