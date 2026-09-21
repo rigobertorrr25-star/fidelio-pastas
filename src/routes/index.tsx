@@ -43,39 +43,15 @@ const TIKTOK_VIDEO_ID = "7686674711215934741";
 const TIKTOK_HANDLE = "@fidelio.mas.que.p";
 
 function TikTokEmbed() {
-  useEffect(() => {
-    const existingScript = document.getElementById("tiktok-embed-script");
-    if (existingScript) {
-      (window as any).tiktokEmbed?.lib?.render?.(
-        document.querySelectorAll(".tiktok-embed"),
-      );
-      return;
-    }
-    const script = document.createElement("script");
-    script.id = "tiktok-embed-script";
-    script.src = "https://www.tiktok.com/embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-  }, []);
-
   return (
-    <blockquote
-      className="tiktok-embed"
-      cite={TIKTOK_VIDEO_URL}
-      data-video-id={TIKTOK_VIDEO_ID}
-      style={{ maxWidth: 605, minWidth: 325, margin: 0 }}
-    >
-      <section>
-        <a
-          target="_blank"
-          rel="noreferrer"
-          title={TIKTOK_HANDLE}
-          href={`https://www.tiktok.com/${TIKTOK_HANDLE}?refer=embed`}
-        >
-          {TIKTOK_HANDLE}
-        </a>
-      </section>
-    </blockquote>
+    <iframe
+      src={`https://www.tiktok.com/embed/v2/${TIKTOK_VIDEO_ID}?autoplay=1&muted=1&loop=1`}
+      allow="autoplay; encrypted-media; fullscreen"
+      allowFullScreen
+      className="aspect-[9/16] w-full rounded-3xl"
+      style={{ border: 0 }}
+      title={`Video de Fidelio en TikTok: ${TIKTOK_HANDLE}`}
+    />
   );
 }
 
