@@ -10,6 +10,7 @@ import {
   MapPin,
   MessageCircle,
   Minus,
+  Play,
   Plus,
   ShoppingBasket,
   X,
@@ -75,6 +76,64 @@ function TikTokEmbed() {
         </a>
       </section>
     </blockquote>
+  );
+}
+
+type TikTokOEmbed = { thumbnail_url?: string; title?: string };
+
+function TikTokFacade() {
+  const [activated, setActivated] = useState(false);
+  const [meta, setMeta] = useState<TikTokOEmbed | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch(`https://www.tiktok.com/oembed?url=${encodeURIComponent(TIKTOK_VIDEO_URL)}`)
+      .then((res) => res.json())
+      .then((data: TikTokOEmbed) => {
+        if (!cancelled) setMeta(data);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  if (activated) {
+    return <TikTokEmbed />;
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={() => setActivated(true)}
+      aria-label="Reproducir video de Fidelio en TikTok"
+      className="group relative block aspect-[9/16] w-full overflow-hidden rounded-3xl border border-border bg-card shadow-2xl"
+    >
+      {meta?.thumbnail_url ? (
+        <img
+          src={meta.thumbnail_url}
+          alt="Video de Fidelio en TikTok"
+          loading="lazy"
+          className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      ) : (
+        <div className="flex size-full items-center justify-center bg-gradient-to-br from-primary/20 to-basil/20">
+          <span className="text-sm text-muted-foreground">Cargando video…</span>
+        </div>
+      )}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-transparent" />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <span className="flex size-16 items-center justify-center rounded-full bg-white/95 text-foreground shadow-lg transition-transform group-hover:scale-110">
+          <Play className="size-7 translate-x-0.5 fill-current" aria-hidden />
+        </span>
+      </div>
+      <div className="absolute inset-x-4 bottom-4 text-left text-white">
+        <p className="text-sm font-semibold">{TIKTOK_HANDLE}</p>
+        <p className="mt-1 line-clamp-2 text-xs text-white/80">
+          {meta?.title ?? "Míranos en TikTok"}
+        </p>
+      </div>
+    </button>
   );
 }
 
@@ -448,7 +507,7 @@ function Index() {
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
             className="mx-auto w-full max-w-[360px] lg:mx-0 lg:justify-self-end"
           >
-            <TikTokEmbed />
+            <TikTokFacade />
           </motion.div>
         </div>
       </section>
@@ -479,7 +538,7 @@ function Index() {
           </div>
         </div>
 
-        <div ref={promoTriggerRef} />
+        <div ref={promoTriggerRef} className="h-px" />
 
         <motion.div layout className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
