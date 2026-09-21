@@ -96,11 +96,11 @@ function HeroVideo() {
         poster={HERO_VIDEO_POSTER}
         autoPlay
         muted
-        loop
         playsInline
         preload="auto"
         onPlaying={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
+        onEnded={() => setPlaying(false)}
         onClick={() => {
           const video = videoRef.current;
           if (video?.paused) video.play().catch(() => {});
