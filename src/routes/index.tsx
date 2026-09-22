@@ -166,6 +166,16 @@ const cartLabel = (product: Product, variant?: Variant) => {
 
 const PRODUCTS: Product[] = [
   {
+    id: "pasta-marinera",
+    name: "Pasta Marinera",
+    description: "Camarones tigre, palmito, mejillones, zumo de limón, perejil y parmesano.",
+    price: 36000,
+    tag: "Espagueti, fettuccine o penne",
+    category: "pastas",
+    image: pastaMarineraPlatoImg,
+    pastaChoice: true,
+  },
+  {
     id: "pasta-napolitana",
     name: "Pasta Napolitana",
     description: "Salsa roja con carne molida.",
@@ -193,16 +203,6 @@ const PRODUCTS: Product[] = [
     tag: "Espagueti, fettuccine o penne",
     category: "pastas",
     image: pastaFidelioImg,
-    pastaChoice: true,
-  },
-  {
-    id: "pasta-marinera",
-    name: "Pasta Marinera",
-    description: "Camarones tigre, palmito, mejillones, zumo de limón, perejil y parmesano.",
-    price: 36000,
-    tag: "Espagueti, fettuccine o penne",
-    category: "pastas",
-    image: pastaMarineraPlatoImg,
     pastaChoice: true,
   },
   {
