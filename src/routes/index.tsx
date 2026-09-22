@@ -21,6 +21,7 @@ import pastaNapolitanaImg from "@/assets/pasta-napolitana.jpg";
 import pastaBechamelImg from "@/assets/pasta-bechamel.jpg";
 import pastaFidelioImg from "@/assets/pasta-fidelio.jpg";
 import pastaMarineraPlatoImg from "@/assets/pasta-marinera-plato.jpg";
+import pechugaNapolitanaImg from "@/assets/pechuga-napolitana.jpg";
 import sanducheImg from "@/assets/sanduche-fidelio.jpg";
 import hamburguesaImg from "@/assets/hamburguesa.jpg";
 import localImg from "@/assets/pasta-marinera.jpg";
@@ -224,6 +225,16 @@ const PRODUCTS: Product[] = [
     tag: "Incluye papas a la francesa",
     category: "especiales",
     image: hamburguesaImg,
+  },
+  {
+    id: "pechuga-napolitana",
+    name: "Pechuga Napolitana",
+    description:
+      "Pechuga bañada en salsa napolitana y queso muenster, acompañada de ensalada de la casa (lechuga crespa, vinagreta y frutos secos) y papa a la francesa.",
+    price: 30000,
+    tag: "Con ensalada y papas",
+    category: "especiales",
+    image: pechugaNapolitanaImg,
   },
   {
     id: "churrasco",
