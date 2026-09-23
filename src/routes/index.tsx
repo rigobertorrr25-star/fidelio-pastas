@@ -31,6 +31,7 @@ import limonadaCerezadaImg from "@/assets/limonada-cerezada.png";
 import limonadaCocoImg from "@/assets/limonada-coco.png";
 import jugosImg from "@/assets/jugos.png";
 import gaseosaImg from "@/assets/gaseosa.png";
+import gaseosaZeroImg from "@/assets/gaseosa-zero.jpg";
 import churrascoImg from "@/assets/churrasco.jpg";
 import aguaConGasImg from "@/assets/agua-con-gas.png";
 import aguaNaturalImg from "@/assets/agua-natural.png";
@@ -299,6 +300,14 @@ const PRODUCTS: Product[] = [
     price: 6000,
     category: "bebidas",
     image: gaseosaImg,
+  },
+  {
+    id: "gaseosa-zero",
+    name: "Coca-Cola Zero",
+    description: "Zero azúcar, 500 ml.",
+    price: 6000,
+    category: "bebidas",
+    image: gaseosaZeroImg,
   },
 ];
 
