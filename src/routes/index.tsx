@@ -17,9 +17,6 @@ import {
 } from "lucide-react";
 
 import logoImg from "@/assets/logo.jpg";
-import pastaNapolitanaImg from "@/assets/pasta-napolitana.jpg";
-import pastaBechamelImg from "@/assets/pasta-bechamel.jpg";
-import pastaFidelioImg from "@/assets/pasta-fidelio.jpg";
 import pastaMarineraPlatoImg from "@/assets/pasta-marinera-plato.jpg";
 import pechugaNapolitanaImg from "@/assets/pechuga-napolitana.jpg";
 import bowlFidelioImg from "@/assets/bowl-fidelio.jpg";
@@ -171,83 +168,39 @@ const cartLabel = (product: Product, variant?: Variant) => {
 
 const PRODUCTS: Product[] = [
   {
-    id: "pasta-marinera",
-    name: "Pasta Marinera",
-    description: "Camarones tigre, palmito, mejillones, zumo de limón, perejil y parmesano.",
+    id: "bowl-marinera",
+    name: "Bowl Marinera",
+    description:
+      "Cremosa pasta marinera con camarones, palmito y salsa marinera de la casa, con un toque de zumo de limón.",
     price: 36000,
-    tag: "Espagueti, fettuccine o penne",
     category: "pastas",
     image: pastaMarineraPlatoImg,
-    pastaChoice: true,
-  },
-  {
-    id: "pasta-napolitana",
-    name: "Pasta Napolitana",
-    description: "Salsa roja con carne molida.",
-    price: 20000,
-    tag: "Espagueti, fettuccine o penne",
-    category: "pastas",
-    image: pastaNapolitanaImg,
-    pastaChoice: true,
-  },
-  {
-    id: "pasta-bechamel",
-    name: "Pasta Bechamel",
-    description: "Salsa blanca con tocineta ahumada, jamón y maíz tierno.",
-    price: 20000,
-    tag: "Espagueti, fettuccine o penne",
-    category: "pastas",
-    image: pastaBechamelImg,
-    pastaChoice: true,
-  },
-  {
-    id: "pasta-fidelio",
-    name: "Pasta Fidelio",
-    description: "Salsa rosé con pollo desmechado.",
-    price: 20000,
-    tag: "Espagueti, fettuccine o penne",
-    category: "pastas",
-    image: pastaFidelioImg,
-    pastaChoice: true,
-  },
-  {
-    id: "bowl-fidelio",
-    name: "Bowl Fidelio",
-    description:
-      "Nuestra tradicional salsa a base de tomates frescos con especias, llevada a la cremosidad con crema de leche y acompañada de pollo desmechado.",
-    price: 0,
-    priceTBD: true,
-    category: "pastas",
-    image: bowlFidelioImg,
-  },
-  {
-    id: "bowl-bechamel",
-    name: "Bowl Bechamel",
-    description: "Nuestra clásica salsa blanca y cremosa acompañada de jamón, tocineta y maíz tierno.",
-    price: 0,
-    priceTBD: true,
-    category: "pastas",
-    image: bowlBechamelImg,
   },
   {
     id: "bowl-napolitano",
     name: "Bowl Napolitano",
     description:
       "Nuestra salsa a base de tomates, preparada con especias y un toque de vinagre balsámico, acompañada de carne molida.",
-    price: 0,
-    priceTBD: true,
+    price: 20000,
     category: "pastas",
     image: bowlNapolitanoImg,
   },
   {
-    id: "bowl-marinera",
-    name: "Bowl Marinera",
-    description:
-      "Cremosa pasta marinera con camarones, palmito y salsa marinera de la casa, con un toque de zumo de limón.",
-    price: 0,
-    priceTBD: true,
+    id: "bowl-bechamel",
+    name: "Bowl Bechamel",
+    description: "Nuestra clásica salsa blanca y cremosa acompañada de jamón, tocineta y maíz tierno.",
+    price: 20000,
     category: "pastas",
-    image: pastaMarineraPlatoImg,
+    image: bowlBechamelImg,
+  },
+  {
+    id: "bowl-fidelio",
+    name: "Bowl Fidelio",
+    description:
+      "Nuestra tradicional salsa a base de tomates frescos con especias, llevada a la cremosidad con crema de leche y acompañada de pollo desmechado.",
+    price: 20000,
+    category: "pastas",
+    image: bowlFidelioImg,
   },
   {
     id: "sanduche",
