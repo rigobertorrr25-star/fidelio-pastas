@@ -22,6 +22,9 @@ import pastaBechamelImg from "@/assets/pasta-bechamel.jpg";
 import pastaFidelioImg from "@/assets/pasta-fidelio.jpg";
 import pastaMarineraPlatoImg from "@/assets/pasta-marinera-plato.jpg";
 import pechugaNapolitanaImg from "@/assets/pechuga-napolitana.jpg";
+import bowlFidelioImg from "@/assets/bowl-fidelio.jpg";
+import bowlBechamelImg from "@/assets/bowl-bechamel.jpg";
+import bowlNapolitanoImg from "@/assets/bowl-napolitano.jpg";
 import sanducheImg from "@/assets/sanduche-fidelio.jpg";
 import hamburguesaImg from "@/assets/hamburguesa.jpg";
 import localImg from "@/assets/pasta-marinera.jpg";
@@ -145,6 +148,7 @@ type Product = {
   pastaChoice?: boolean;
   jugoCombo?: boolean;
   fallbackIcon?: typeof Beef;
+  priceTBD?: boolean;
 };
 
 const getUnitPrice = (product: Product, variant?: Variant) => {
@@ -205,6 +209,35 @@ const PRODUCTS: Product[] = [
     category: "pastas",
     image: pastaFidelioImg,
     pastaChoice: true,
+  },
+  {
+    id: "bowl-fidelio",
+    name: "Bowl Fidelio",
+    description:
+      "Nuestra tradicional salsa a base de tomates frescos con especias, llevada a la cremosidad con crema de leche y acompañada de pollo desmechado.",
+    price: 0,
+    priceTBD: true,
+    category: "pastas",
+    image: bowlFidelioImg,
+  },
+  {
+    id: "bowl-bechamel",
+    name: "Bowl Bechamel",
+    description: "Nuestra clásica salsa blanca y cremosa acompañada de jamón, tocineta y maíz tierno.",
+    price: 0,
+    priceTBD: true,
+    category: "pastas",
+    image: bowlBechamelImg,
+  },
+  {
+    id: "bowl-napolitano",
+    name: "Bowl Napolitano",
+    description:
+      "Nuestra salsa a base de tomates, preparada con especias y un toque de vinagre balsámico, acompañada de carne molida.",
+    price: 0,
+    priceTBD: true,
+    category: "pastas",
+    image: bowlNapolitanoImg,
   },
   {
     id: "sanduche",
@@ -661,12 +694,19 @@ function Index() {
                     )}
 
                     <div className="mt-2 flex items-center justify-between">
-                      <span className="font-display text-2xl text-primary">
-                        {formatCOP(unitPrice)}
-                      </span>
+                      {product.priceTBD ? (
+                        <span className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+                          Precio próximamente
+                        </span>
+                      ) : (
+                        <span className="font-display text-2xl text-primary">
+                          {formatCOP(unitPrice)}
+                        </span>
+                      )}
                       <button
                         onClick={() => addToCart(product.id, selectedVariant)}
-                        className="inline-flex items-center gap-1.5 rounded-full bg-basil px-4 py-2 text-sm font-semibold text-basil-foreground transition-transform hover:scale-[1.04] active:scale-95"
+                        disabled={product.priceTBD}
+                        className="inline-flex items-center gap-1.5 rounded-full bg-basil px-4 py-2 text-sm font-semibold text-basil-foreground transition-transform hover:scale-[1.04] active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:scale-100"
                       >
                         <Plus className="size-4" aria-hidden />
                         Agregar
