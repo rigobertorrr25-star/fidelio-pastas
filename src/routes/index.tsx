@@ -240,6 +240,16 @@ const PRODUCTS: Product[] = [
     image: bowlNapolitanoImg,
   },
   {
+    id: "bowl-marinera",
+    name: "Bowl Marinera",
+    description:
+      "Cremosa pasta marinera con camarones, palmito y salsa marinera de la casa, con un toque de zumo de limón.",
+    price: 0,
+    priceTBD: true,
+    category: "pastas",
+    image: pastaMarineraPlatoImg,
+  },
+  {
     id: "sanduche",
     name: "Sánduche Fidelio",
     description:
@@ -504,20 +514,17 @@ function Index() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="max-w-xl"
           >
-            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
-              Más que pasta
-            </p>
             <h1
               className="text-6xl uppercase leading-[0.95] tracking-wide sm:text-7xl lg:text-8xl"
               style={{ fontFamily: "var(--font-hero)" }}
             >
-              <span className="block text-foreground">Pastas</span>
               <span
                 className="block text-primary"
                 style={{ textShadow: "3px 3px 0 var(--basil)" }}
               >
                 Fidelio
               </span>
+              <span className="block text-foreground">Más que pasta</span>
             </h1>
             <p className="mt-5 text-lg text-muted-foreground">
               Disfruta del auténtico sabor de la pasta en cada bocado. 🍝✨ Explora nuestro
