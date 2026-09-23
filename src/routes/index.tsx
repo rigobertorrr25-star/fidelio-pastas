@@ -13,6 +13,7 @@ import {
   Play,
   Plus,
   ShoppingBasket,
+  Star,
   X,
 } from "lucide-react";
 
@@ -38,6 +39,7 @@ import promoImg from "@/assets/promo-mientras-vivo.jpg";
 const WHATSAPP_NUMBER = "573170549739";
 const WHATSAPP_DISPLAY = "317 054 9739";
 const INSTAGRAM_URL = "https://www.instagram.com/fideliopasta/";
+const GOOGLE_REVIEW_URL = "https://share.google/pwX5fsImJWR5pMUWZ";
 const ADDRESS = "Calle 47 # 22-08, Altamira, Palmira";
 const HOURS = "4:00 p. m. a 11:00 p. m.";
 const TIKTOK_VIDEO_URL = "https://www.tiktok.com/@fidelio.mas.que.p/video/7686674711215934741";
@@ -759,6 +761,27 @@ function Index() {
         >
           <Instagram className="size-5" aria-hidden />
           @fideliopasta
+        </a>
+
+        <a
+          href={GOOGLE_REVIEW_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-6 flex flex-col items-center gap-3 rounded-3xl bg-basil px-6 py-8 text-center transition-transform hover:scale-[1.01] sm:flex-row sm:justify-between sm:text-left"
+        >
+          <div className="flex items-center gap-3">
+            <div className="flex text-basil-foreground">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} className="size-5 fill-current" aria-hidden />
+              ))}
+            </div>
+            <p className="font-display text-xl text-basil-foreground sm:text-2xl">
+              ¿Te gustó tu experiencia? Déjanos tu reseña en Google
+            </p>
+          </div>
+          <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-basil-foreground px-6 py-2.5 font-semibold text-basil transition-transform hover:scale-105">
+            Dejar reseña
+          </span>
         </a>
       </section>
 
