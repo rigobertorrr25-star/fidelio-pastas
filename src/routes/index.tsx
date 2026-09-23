@@ -30,10 +30,10 @@ import limonadaCerezadaImg from "@/assets/limonada-cerezada.png";
 import limonadaCocoImg from "@/assets/limonada-coco.png";
 import jugosImg from "@/assets/jugos.png";
 import gaseosaImg from "@/assets/gaseosa.png";
-import churrascoImg from "@/assets/churrasco.png";
+import churrascoImg from "@/assets/churrasco.jpg";
 import aguaConGasImg from "@/assets/agua-con-gas.png";
 import aguaNaturalImg from "@/assets/agua-natural.png";
-import promoImg from "@/assets/promo-pastas-bowl.jpg";
+import promoImg from "@/assets/promo-mientras-vivo.jpg";
 
 const WHATSAPP_NUMBER = "573170549739";
 const WHATSAPP_DISPLAY = "317 054 9739";
@@ -239,7 +239,7 @@ const PRODUCTS: Product[] = [
   {
     id: "churrasco",
     name: "Churrasco",
-    description: "Churrasco con chimichurri, papas a la francesa y ensalada mediterránea.",
+    description: "Acompañado de papas a la francesa, ensalada de la casa y chimichurri.",
     price: 45000,
     tag: "Con papas y ensalada",
     category: "especiales",
@@ -805,7 +805,7 @@ function Index() {
               >
                 <img
                   src={promoImg}
-                  alt="Promoción Fidelio: pastas en bowl"
+                  alt="Mientras uno esté vivo, uno debe comer pasta lo más que pueda — Fidelio"
                   className="block w-full"
                 />
               </a>
