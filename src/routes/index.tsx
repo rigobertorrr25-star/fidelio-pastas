@@ -176,8 +176,10 @@ const PRODUCTS: Product[] = [
     description:
       "Cremosa pasta marinera con camarones, palmito y salsa marinera de la casa, con un toque de zumo de limón.",
     price: 36000,
+    tag: "Espagueti, fettuccine o penne",
     category: "pastas",
     image: pastaMarineraPlatoImg,
+    pastaChoice: true,
   },
   {
     id: "bowl-napolitano",
@@ -185,16 +187,20 @@ const PRODUCTS: Product[] = [
     description:
       "Nuestra salsa a base de tomates, preparada con especias y un toque de vinagre balsámico, acompañada de carne molida.",
     price: 20000,
+    tag: "Espagueti, fettuccine o penne",
     category: "pastas",
     image: bowlNapolitanoImg,
+    pastaChoice: true,
   },
   {
     id: "bowl-bechamel",
     name: "Bowl Bechamel",
     description: "Nuestra clásica salsa blanca y cremosa acompañada de jamón, tocineta y maíz tierno.",
     price: 20000,
+    tag: "Espagueti, fettuccine o penne",
     category: "pastas",
     image: bowlBechamelImg,
+    pastaChoice: true,
   },
   {
     id: "bowl-fidelio",
@@ -202,8 +208,10 @@ const PRODUCTS: Product[] = [
     description:
       "Nuestra tradicional salsa a base de tomates frescos con especias, llevada a la cremosidad con crema de leche y acompañada de pollo desmechado.",
     price: 20000,
+    tag: "Espagueti, fettuccine o penne",
     category: "pastas",
     image: bowlFidelioImg,
+    pastaChoice: true,
   },
   {
     id: "sanduche",
