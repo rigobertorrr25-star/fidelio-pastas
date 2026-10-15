@@ -50,7 +50,7 @@ const TIKTOK_HANDLE = "@fidelio.mas.que.p";
 function TikTokEmbed() {
   return (
     <iframe
-      src={`https://www.tiktok.com/embed/v2/${TIKTOK_VIDEO_ID}?autoplay=1&muted=1&loop=1`}
+      src={`https://www.tiktok.com/player/v1/${TIKTOK_VIDEO_ID}?autoplay=1&loop=1&rel=0&description=0`}
       allow="autoplay; encrypted-media; fullscreen"
       allowFullScreen
       className="aspect-[9/16] w-full rounded-3xl"
