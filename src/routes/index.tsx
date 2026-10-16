@@ -10,7 +10,6 @@ import {
   MapPin,
   MessageCircle,
   Minus,
-  Play,
   Plus,
   ShoppingBasket,
   Star,
@@ -43,92 +42,47 @@ const INSTAGRAM_URL = "https://www.instagram.com/fideliopasta/";
 const GOOGLE_REVIEW_URL = "https://share.google/pwX5fsImJWR5pMUWZ";
 const ADDRESS = "Calle 47 # 22-08, Altamira, Palmira";
 const HOURS = "4:00 p. m. a 11:00 p. m.";
-const TIKTOK_VIDEO_URL = "https://www.tiktok.com/@fidelio.mas.que.p/video/7686674711215934741";
-const TIKTOK_VIDEO_ID = "7686674711215934741";
+const TIKTOK_PROFILE_URL = "https://www.tiktok.com/@fidelio.mas.que.p";
 const TIKTOK_HANDLE = "@fidelio.mas.que.p";
 
-function TikTokEmbed({ thumbnailUrl }: { thumbnailUrl?: string }) {
-  const [loaded, setLoaded] = useState(false);
+function HeroVideo() {
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  return (
-    <div className="relative aspect-[9/16] w-full overflow-hidden rounded-3xl bg-black">
-      <iframe
-        src={`https://www.tiktok.com/player/v1/${TIKTOK_VIDEO_ID}?autoplay=1&loop=1&rel=0&description=0`}
-        allow="autoplay; encrypted-media; fullscreen"
-        allowFullScreen
-        onLoad={() => setLoaded(true)}
-        className="size-full"
-        style={{ border: 0 }}
-        title={`Video de Fidelio en TikTok: ${TIKTOK_HANDLE}`}
-      />
-      {!loaded && (
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          {thumbnailUrl && (
-            <img src={thumbnailUrl} alt="" className="absolute inset-0 size-full object-cover" />
-          )}
-          <div className="absolute inset-0 bg-black/40" />
-          <span className="relative size-12 animate-spin rounded-full border-4 border-white/30 border-t-white" />
-        </div>
-      )}
-    </div>
-  );
-}
-
-type TikTokOEmbed = { thumbnail_url?: string; title?: string };
-
-function TikTokFacade() {
-  const [activated, setActivated] = useState(false);
-  const [meta, setMeta] = useState<TikTokOEmbed | null>(null);
-
+  // El HTML del servidor no trae el atributo `muted` (React no lo escribe),
+  // y sin él iPhone y Chrome no arrancan el video solos: se fuerza al cargar.
   useEffect(() => {
-    let cancelled = false;
-    fetch(`https://www.tiktok.com/oembed?url=${encodeURIComponent(TIKTOK_VIDEO_URL)}`)
-      .then((res) => res.json())
-      .then((data: TikTokOEmbed) => {
-        if (!cancelled) setMeta(data);
-      })
-      .catch(() => {});
-    return () => {
-      cancelled = true;
-    };
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = true;
+    video.play().catch(() => {});
   }, []);
 
-  if (activated) {
-    return <TikTokEmbed thumbnailUrl={meta?.thumbnail_url} />;
-  }
-
   return (
-    <button
-      type="button"
-      onClick={() => setActivated(true)}
-      aria-label="Reproducir video de Fidelio en TikTok"
-      className="group relative block aspect-[9/16] w-full overflow-hidden rounded-3xl border border-border bg-card shadow-2xl"
-    >
-      {meta?.thumbnail_url ? (
-        <img
-          src={meta.thumbnail_url}
-          alt="Video de Fidelio en TikTok"
-          loading="lazy"
-          className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-      ) : (
-        <div className="flex size-full items-center justify-center bg-gradient-to-br from-primary/20 to-basil/20">
-          <span className="text-sm text-muted-foreground">Cargando video…</span>
-        </div>
-      )}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-transparent" />
-      <div className="absolute inset-0 flex items-center justify-center">
-        <span className="flex size-16 items-center justify-center rounded-full bg-white/95 text-foreground shadow-lg transition-transform group-hover:scale-110">
-          <Play className="size-7 translate-x-0.5 fill-current" aria-hidden />
-        </span>
-      </div>
-      <div className="absolute inset-x-4 bottom-4 text-left text-white">
+    <div className="relative aspect-[9/16] w-full overflow-hidden rounded-3xl border border-border bg-card shadow-2xl">
+      <video
+        ref={videoRef}
+        poster="/video/fidelio-portada.jpg"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-label="Video de Fidelio: nuestros platos"
+        className="size-full object-cover"
+      >
+        <source src="/video/fidelio.mp4" type="video/mp4" />
+        <source src="/video/fidelio.webm" type="video/webm" />
+      </video>
+      <a
+        href={TIKTOK_PROFILE_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-4 pb-4 pt-10 text-left text-white"
+      >
         <p className="text-sm font-semibold">{TIKTOK_HANDLE}</p>
-        <p className="mt-1 line-clamp-2 text-xs text-white/80">
-          {meta?.title ?? "Míranos en TikTok"}
-        </p>
-      </div>
-    </button>
+        <p className="mt-1 text-xs text-white/80">Míranos en TikTok</p>
+      </a>
+    </div>
   );
 }
 
@@ -541,7 +495,7 @@ function Index() {
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
             className="mx-auto w-full max-w-[360px] lg:mx-0 lg:justify-self-end"
           >
-            <TikTokFacade />
+            <HeroVideo />
           </motion.div>
         </div>
       </section>
