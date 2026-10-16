@@ -47,16 +47,30 @@ const TIKTOK_VIDEO_URL = "https://www.tiktok.com/@fidelio.mas.que.p/video/768667
 const TIKTOK_VIDEO_ID = "7686674711215934741";
 const TIKTOK_HANDLE = "@fidelio.mas.que.p";
 
-function TikTokEmbed() {
+function TikTokEmbed({ thumbnailUrl }: { thumbnailUrl?: string }) {
+  const [loaded, setLoaded] = useState(false);
+
   return (
-    <iframe
-      src={`https://www.tiktok.com/player/v1/${TIKTOK_VIDEO_ID}?autoplay=1&loop=1&rel=0&description=0`}
-      allow="autoplay; encrypted-media; fullscreen"
-      allowFullScreen
-      className="aspect-[9/16] w-full rounded-3xl"
-      style={{ border: 0 }}
-      title={`Video de Fidelio en TikTok: ${TIKTOK_HANDLE}`}
-    />
+    <div className="relative aspect-[9/16] w-full overflow-hidden rounded-3xl bg-black">
+      <iframe
+        src={`https://www.tiktok.com/player/v1/${TIKTOK_VIDEO_ID}?autoplay=1&loop=1&rel=0&description=0`}
+        allow="autoplay; encrypted-media; fullscreen"
+        allowFullScreen
+        onLoad={() => setLoaded(true)}
+        className="size-full"
+        style={{ border: 0 }}
+        title={`Video de Fidelio en TikTok: ${TIKTOK_HANDLE}`}
+      />
+      {!loaded && (
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          {thumbnailUrl && (
+            <img src={thumbnailUrl} alt="" className="absolute inset-0 size-full object-cover" />
+          )}
+          <div className="absolute inset-0 bg-black/40" />
+          <span className="relative size-12 animate-spin rounded-full border-4 border-white/30 border-t-white" />
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -80,7 +94,7 @@ function TikTokFacade() {
   }, []);
 
   if (activated) {
-    return <TikTokEmbed />;
+    return <TikTokEmbed thumbnailUrl={meta?.thumbnail_url} />;
   }
 
   return (
