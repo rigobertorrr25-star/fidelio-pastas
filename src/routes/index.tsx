@@ -102,6 +102,7 @@ const JUGO_FLAVORS = [
   { name: "Mango biche", price: 12000 },
   { name: "Mango maduro", price: 12000 },
   { name: "Maracuyá", price: 10000 },
+  { name: "Maracumango", price: 12000 },
 ] as const;
 type JugoFlavor = (typeof JUGO_FLAVORS)[number]["name"];
 const JUGO_VARIANT_SEP = " · ";
