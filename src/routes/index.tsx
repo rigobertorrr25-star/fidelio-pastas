@@ -24,6 +24,9 @@ import bowlBechamelImg from "@/assets/bowl-bechamel.jpg";
 import bowlNapolitanoImg from "@/assets/bowl-napolitano.jpg";
 import sanducheImg from "@/assets/sanduche-fidelio.jpg";
 import hamburguesaImg from "@/assets/hamburguesa.jpg";
+import hamburguesaRusticaImg from "@/assets/hamburguesa-rustica.jpg";
+import dolceSandwichImg from "@/assets/dolce-sandwich.jpg";
+import bowlChampinonesImg from "@/assets/bowl-champinones.jpg";
 import localImg from "@/assets/pasta-marinera.jpg";
 import limonadaNaturalImg from "@/assets/limonada-natural.png";
 import limonadaCerezadaImg from "@/assets/limonada-cerezada.png";
@@ -182,6 +185,17 @@ const PRODUCTS: Product[] = [
     pastaChoice: true,
   },
   {
+    id: "salsa-champinones",
+    name: "Salsa de Champiñones",
+    description:
+      "Deliciosa salsa cremosa preparada con champiñones frescos, pollo desmechado, crema de leche, queso parmesano, un toque de vino blanco y pimienta.",
+    price: 23000,
+    tag: "Espagueti, fettuccine o penne",
+    category: "pastas",
+    image: bowlChampinonesImg,
+    pastaChoice: true,
+  },
+  {
     id: "sanduche",
     name: "Sánduche Fidelio",
     description:
@@ -200,6 +214,24 @@ const PRODUCTS: Product[] = [
     tag: "Incluye papas a la francesa",
     category: "especiales",
     image: hamburguesaImg,
+  },
+  {
+    id: "hamburguesa-rustica",
+    name: "Hamburguesa La Rústica",
+    description:
+      "Jugosa carne a la plancha, chorizo, queso muenster fundido, tomate fresco con albahaca, cebolla crispy y un toque irresistible de chimichurri, todo entre panes suaves y acompañado de nuestra deliciosa salsa de la casa.",
+    price: 27500,
+    category: "especiales",
+    image: hamburguesaRusticaImg,
+  },
+  {
+    id: "dolce-sandwich",
+    name: "Dolce Sándwich",
+    description:
+      "Delicioso pan relleno de pechuga a la plancha, jamón, queso muenster fundido, rúgula fresca y cebolla caramelizada, acompañado de nuestra salsa de la casa.",
+    price: 24000,
+    category: "especiales",
+    image: dolceSandwichImg,
   },
   {
     id: "pechuga-napolitana",
