@@ -221,6 +221,7 @@ const PRODUCTS: Product[] = [
     description:
       "Jugosa carne a la plancha, chorizo, queso muenster fundido, tomate fresco con albahaca, cebolla crispy y un toque irresistible de chimichurri, todo entre panes suaves y acompañado de nuestra deliciosa salsa de la casa.",
     price: 27500,
+    tag: "Incluye papas a la francesa",
     category: "especiales",
     image: hamburguesaRusticaImg,
   },
@@ -230,6 +231,7 @@ const PRODUCTS: Product[] = [
     description:
       "Delicioso pan relleno de pechuga a la plancha, jamón, queso muenster fundido, rúgula fresca y cebolla caramelizada, acompañado de nuestra salsa de la casa.",
     price: 24000,
+    tag: "Incluye papas a la francesa",
     category: "especiales",
     image: dolceSandwichImg,
   },
